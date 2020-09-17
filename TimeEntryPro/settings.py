@@ -29,7 +29,7 @@ SECRET_KEY = '-%5djun+umljxg*d53c9ix0ptv4hxg2(uwj5pb^b+7j2o^$l4d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['time-entry-app-anuj.herokuapp.com/','127.0.0.1']
+ALLOWED_HOSTS = ['time-entry-app-anuj.herokuapp.com','127.0.0.1']
 
 
 # Application definition
