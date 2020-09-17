@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% if user.is_authenticated %}
+
+<div class="row">
+    <div class="col-9 col-sm-6 col-md-6 col-lg-4">
+        <a href="{% url 'project_list' %}">
+            <div class="home-card">
+                <div class="home-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="icon-detail">
+                    <h5><strong>Projects</strong></h5>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-9 col-sm-6 col-md-6 col-lg-4">
+        <a href="{% url 'task_list' %}">
+            <div class="home-card">
+                <div class="home-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="icon-detail">
+                    <h5><strong>Tasks</strong></h5>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-9 col-sm-6 col-md-6 col-lg-4">
+        <a href="{% url 'profile' %}">
+            <div class="home-card">
+                <div class="home-icon">
+                    <i class="fas fa-user-cog"></i>
+                </div>
+                <div class="icon-detail">
+                    <h5><strong>Setting</strong></h5>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+{% else %}
+
+
+<div class="row">
+    <div class="col-lg-2"></div>
+
+    <div class="col-lg-8 common-border" style="text-align: center;">
+
+
+        <h3>
+            Please login to view the dashboard
+        </h3>
+
+        <h4>For Login<a href="{% url 'login' %}"> Click here </a></h4> 
+        
+    </div>
+
+    <div class="col-lg-2"></div>
+</div>
+
+
+{% endif %}
+
+<br>
+<br>
+
+
+
+
+{% endblock %}

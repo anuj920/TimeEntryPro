@@ -1,0 +1,32 @@
+  
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<div class="centerstage">
+
+    <div class="row">
+
+        <div class="col-12 add-project">
+            <div class="float-right">
+                <a href="{% url 'create_project' %}"><button type="button"><i class="fas fa-plus"></i> Create Project</button></a> 
+            </div>
+        </div>
+
+        {% for project in project_list %}
+        <div class="col-4">
+            <div class="project">
+                <h2><a href="{% url 'project_detail' id=project.id %}" style="color: #00ACC1;">{{ project.project_name }}</a></h2>
+                <div class="date">
+                    <p>Created on: {{ project.created_at }}</p>
+                </div>
+            </div>
+        </div>
+            {% empty %}
+            <h3 class="jumbotron col-12">No Project yet</h3>
+            {% endfor %}
+    </div>
+</div>
+{% endblock %}

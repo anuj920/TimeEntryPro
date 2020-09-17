@@ -1,0 +1,1 @@
+web: gunicorn TimeEntryPro.wsgi --log-file -

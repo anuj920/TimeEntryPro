@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main" style="width: 650px;">
+  <p class="sign" align="center">Sign Up</p>
+  <form class="form1" method="POST" action="{% url 'signup' %}">
+    {% csrf_token %}
+      <input class="username" type="text" align="center" placeholder="Enter Username" name="username" required>
+      {% for error in form.username.errors %}
+      <div class="error">
+          <span>[{{ error}}]</span>
+      </div>
+      {% endfor %}
+
+      <input class="username" type="text" align="center" placeholder="Enter First Name" name="first_name" required>
+      {% for error in form.first_name.errors %}
+      <div class="error">
+          <span>[{{ error}}]</span>
+      </div>
+      {% endfor %}
+
+
+      <input class="username" type="text" align="center" placeholder="Enter Last Name" name="last_name" required>
+      {% for error in form.username.errors %}
+      <div class="error">
+          <span>[{{ error}}]</span>
+      </div>
+      {% endfor %}
+      
+
+      <input class="username" type="email" align="center" placeholder="Enter Email" name="email" required>
+      {% for error in form.email.errors %}
+      <div class="error">
+          <span>[{{ error}}]</span>
+      </div>
+      {% endfor %}
+
+
+      <input class="username" type="password" align="center" placeholder="Enter Password" name="password1" required>
+      {% for error in form.password.errors %}
+      <div class="error">
+          <span>[{{ error}}]</span>
+      </div>
+      {% endfor %}
+
+
+      <input class="username" type="password" align="center" placeholder="Confirm Password" name="password2" required>
+      {% for error in form.password2.errors %}
+      <div class="error">
+          <span>[{{ error}}]</span>
+      </div>
+      {% endfor %}
+
+
+      <br>
+      <button type="submit" class="submit signup_submit" align="center">Sign Up</button>
+      <input type="hidden" name="next" value="{{ next }}" />
+      <br>
+      <p class="forgot" align="center">Have Account <a style="text-decoration: underline !important; color: #03A9F4;" href="{% url 'login' %}">Login</a></p>
+      <br>
+      <br>
+  </form>
+</div>
+{% endblock %}

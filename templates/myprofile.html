@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="myprofile">
+    <div class="jumbotron">
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td class="font-weight-bold">{{ user.get_full_name }}</td>
+            </tr>
+            <tr>
+                <td>User Name: </td>
+                <td class="font-weight-bold"> {{ user.get_username }}</td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td class="font-weight-bold">{{ user.email }}</td>
+            </tr>
+            <tr>
+                <td>Last Login:</td>
+                <td class="font-weight-bold">{{ user.last_login }}</td>
+            </tr>
+        </table>
+        <br>
+        <span style="margin-top:30px;"><h5>Want To Change the password,<strong><a href="{% url 'change_password' %}">Change Password</a></strong></h5></span>
+    </div>
+</div>
+
+
+{% endblock %}

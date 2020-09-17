@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="centerstage">
+
+    <div class="row">
+
+        <div class="col-12 add-project">
+            <div class="float-right">
+                <a href="{% url 'create_task' %}"><button type="button"><i class="fas fa-plus"></i> Create Task</button></a> 
+            </div>
+        </div>
+
+        {% if error %}
+        <p class="error font-weight-bold" align="center"> {{ error }}</p>
+        {% endif %}
+
+        {% for task in task_list %}
+        <div class="col-12" style="margin: 10px 0;">
+            <form action="{% url 'update_task' id=task.id %}" method="POST">
+                {% csrf_token %}
+                <div class="project row">
+                    <div class="task_name col-4">
+                        <h2>{{ task.task_name }}</a></h2>
+                        <span class="task-project"> <span class="font-weight-bold">Project Name:</span> {{ task.project__project_name }}</span>
+                        <div class="date">
+                            <p>Created on: {{ task.created_at }}</p>
+                        </div>
+                    </div>
+                    <div class="date_edit col-6">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="time">
+                                    <label class="date_label" for="start_time">Start Time</label>
+                                    <input type="datetime-local" name="start_time" value="{{ task.start_time }}">
+                                </div>
+                            </div>
+                            {% if task.start_time %}
+                            <div class="col-6">
+                                <div class="time">
+                                    <label class="date_label" for="end_time">End Time</label>
+                                    <input type="datetime-local" name="end_time" value="{{ task.end_time }}">
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% if task.is_completed %}
+                    <div class="time_sumbit col-2">
+                        <div class="completed">
+                            <span>Completed</span>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="time_sumbit col-2">
+                        <button class="save" type="submit">Sumbit</button>
+                    </div>
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+            {% empty %}
+            <h3 class="jumbotron col-12">No Task yet</h3>
+            {% endfor %}
+    </div>
+</div>
+{% endblock %}

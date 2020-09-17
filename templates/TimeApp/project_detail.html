@@ -1,0 +1,74 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+
+    <div class="col-12 project-detail">
+            <div class="row">
+                <div class="project-name col-4">
+                    <p>Project Name: </p>
+                    <h2>{{ project_name }}</h2>
+                </div>
+                <div class="project-creation col-4">
+                    <p>Created On:</p>
+                    <h6>{{ project_created_at }}</h6>
+                </div>
+            </div>
+    </div>
+
+    <div class="col-12">
+
+        <div class="task_head">
+            <span>Task Details Related to Project: </span>
+        </div>
+
+        <div class="task_details">
+            <div class="row">
+                {% for task in tasks %}
+                <div class="col-12" style="margin: 10px 0;">
+                    <div class="project row">
+                        <div class="task_name col-4">
+                            <h2>{{ task.task_name }}</a></h2>
+                            <div class="date">
+                                <p>Created on: {{ task.created_at }}</p>
+                            </div>
+                        </div>
+                        <div class="date_edit col-6">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="time">
+                                        <p>Start Time: <br> <span>{{ task.start_time }}</span></p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="time">
+                                        <p>End Time: <br> <span>{{ task.end_time }}</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="time_working col-2">
+                            <p>Working Time: <br> <span>
+                                {{ task.working_time }}
+                            </span></p>
+                        </div>
+
+                </div>
+
+                {% empty %}
+
+                <div class="jumbotron col-12">
+                    <h3>No Task yet</h3>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

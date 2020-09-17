@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main" align="center">
+    <p class="sign" align="center">Sign in</p>
+    <form class="form1" method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <input class="username" type="text" align="center" placeholder="Username" name="username" required>
+        <input class="username" name="password" type="password" align="center" placeholder="Password" required>
+        
+        {% if form.errors %}
+        <p class="error" align="center">
+            Your username and password didn't match. Please try again.</p>
+        {% endif %}
+        <br>
+        <button type="submit" class="submit" align="center">Sign in</button>
+        <input type="hidden" name="next" value="{{ next }}" />
+        <br>
+        <p class="forgot" align="center"><a href="{% url 'signup' %}">Create New Account</a></p>
+        <br>
+    </form>
+</div>
+{% endblock content %}
